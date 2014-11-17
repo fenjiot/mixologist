@@ -1,0 +1,16 @@
+div.content {
+  @include span-columns(8);
+}
+
+div.recipe {
+  border: 1px solid black;
+  @include span-columns(4);
+
+  .name {
+    font-size: $base-font-size * 2;
+  }
+
+  .instructions {
+    font-size: $base-font-size * 1.5;
+  }
+}

@@ -9,7 +9,22 @@
 <body>
 
   <div class="container">
-    <%= yield %>
+    <header class="session">
+      <% if signed_in? %>
+        <%= link_to "Recipes", recipes_path %> |
+        <%= current_user.email %>
+        <%= link_to "Sign out", session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Sign in", new_session_path %>
+        <%= link_to "Sign up", new_user_path %>
+      <% end %>
+    </header>
+
+    <h1><%= link_to "Mixologist", root_path %></h1>
+
+    <div class="content">
+      <%= yield %>
+    </div>
   </div>
 
 </body>
