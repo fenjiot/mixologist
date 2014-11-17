@@ -1,7 +1,8 @@
 <div class="recipe">
   <h3><%= recipe.name %></h3>
   <%= link_to "Edit recipe", edit_recipe_path(recipe) %>
-  <%= button_to "Delete", recipe_path(recipe), method: :delete %>
+  <%= button_to "Delete", recipe, method: :delete %>
+
   <h4>Instructions</h4>
   <div class="instructions">
     <%= recipe.instructions %>

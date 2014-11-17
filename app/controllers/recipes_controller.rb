@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :require_login, except: [:index, :show]
+  skip_before_action :require_login, only: [:index, :show]
 
   def index
     @recipes = Recipe.all
@@ -31,7 +31,7 @@ class RecipesController < ApplicationController
     @recipe = load_recipe_from_url
 
     if @recipe.update(recipe_params)
-      redirect_to recipe_path(@recipe)
+      redirect_to @recipe
     else
       render :edit
     end
