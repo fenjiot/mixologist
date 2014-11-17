@@ -1,7 +1,14 @@
-<h2>Recipes</h2>
+<h2>Options</h2>
 
 <%= link_to "Add new recipe", new_recipe_path %>
+<br />
+<br />
 
+<h3>Recipies</h3>
 <ul>
-  <%= render @recipes %>
+  <% @recipes.each do |recipe| %>
+    <li>
+      <%= link_to recipe.name, recipe_path(recipe) %>
+    </li>
+  <% end %>
 </ul>

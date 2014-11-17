@@ -1,0 +1,15 @@
+<h2>Edit drink recipe</h2>
+
+<%= form_for @recipe do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :instructions %>
+    <%= form.text_area :instructions %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
