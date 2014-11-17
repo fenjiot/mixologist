@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+
     if @recipe.save
       redirect_to recipes_path
     else
@@ -26,11 +27,19 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = load_recipe_from_url
+
     if @recipe.update(recipe_params)
       redirect_to recipe_path(@recipe)
     else
       render :edit
     end
+  end
+
+  def destroy
+    recipe = load_recipe_from_url
+    recipe.destroy
+
+    redirect_to recipes_path
   end
 
   private
