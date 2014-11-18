@@ -4,3 +4,6 @@
   <h4>Ingredient description</h4>
   <%= @ingredient.description %>
 </div>
+
+<%= link_to "Edit ingredient", edit_ingredient_path(@ingredient) %>
+<%= button_to "Delete ingredient", @ingredient, method: :delete %>

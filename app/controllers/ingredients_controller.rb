@@ -21,6 +21,27 @@ class IngredientsController < ApplicationController
     @ingredient = load_ingredient_from_url
   end
 
+  def edit
+    @ingredient = load_ingredient_from_url
+  end
+
+  def update
+    @ingredient = load_ingredient_from_url
+
+    if @ingredient.update(ingredient_params)
+      redirect_to @ingredient
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    ingredient = load_ingredient_from_url
+    ingredient.destroy
+
+    redirect_to ingredients_path
+  end
+
   private
 
   def ingredient_params
