@@ -1,0 +1,17 @@
+<h2>Add a new ingredient</h2>
+
+<%= render "error_messages", target: @ingredient %>
+
+<%= form_for @ingredient do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
