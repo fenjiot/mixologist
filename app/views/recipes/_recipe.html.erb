@@ -3,6 +3,24 @@
   <%= link_to "Edit recipe", edit_recipe_path(recipe) %>
   <%= button_to "Delete", recipe, method: :delete %>
 
+  <br />
+
+  <h4>Ingredients</h4>
+  <%= link_to "Add ingredient", recipe_recipe_ingredients_path(recipe) %>
+
+  <%= form_for recipe do |form| %>
+    <% options = options_from_collection_for_select(recipe.available_ingredients, "id", "name") %>
+    <%= form.select :ingredients, options %>
+
+    <%= form.submit %>
+  <% end %>
+
+  <ul>
+    <%= render recipe.ingredients %>
+  </ul>
+
+  <br />
+
   <h4>Instructions</h4>
   <div class="instructions">
     <%= recipe.instructions %>

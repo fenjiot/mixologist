@@ -1,17 +1,10 @@
-<%= render "error_messages", target: @recipe %>
-
 <h2>Edit drink recipe</h2>
 
-<%= form_for @recipe do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+<%= render "form", recipe: @recipe %>
 
-  <div>
-    <%= form.label :instructions %>
-    <%= form.text_area :instructions %>
-  </div>
+  <%= form_for @recipe do |form| %>
+    <% options = options_from_collection_for_select(@recipe.available_ingredients, "id", "name") %>
+    <%= form.select :ingredients, options %>
 
-  <%= form.submit %>
-<% end %>
+    <%= form.submit %>
+  <% end %>
