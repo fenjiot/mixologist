@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20141118140804) do
 
   create_table "ingredients", force: true do |t|
     t.string   "name",        null: false
-    t.string   "description"
+    t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
