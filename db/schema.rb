@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20141118140804) do
     t.datetime "updated_at",  null: false
   end
 
+  add_index "ingredients", ["name"], name: "index_ingredients_on_name", unique: true, using: :btree
+
   create_table "recipes", force: true do |t|
     t.string   "name",         null: false
     t.text     "instructions", null: false
