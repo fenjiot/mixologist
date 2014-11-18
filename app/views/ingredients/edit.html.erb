@@ -1,0 +1,17 @@
+<%= render "error_messages", target: @ingredient %>
+
+<h2>Edit ingredient</h2>
+
+<%= form_for @ingredient do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
