@@ -1,0 +1,25 @@
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
+<%= form_for [recipe, RecipeIngredient.new] do |form| %>
+  <div>
+    <% options = options_from_collection_for_select( bartender.available_ingredients,
+                                                    "id",
+                                                    "name"
+                                                   ) %>
+    <%= form.select :ingredient_id, options %>
+  </div>
+
+  <div>
+    <%= form.label :qty %>
+    <%= form.text_field :qty %>
+  </div>
+
+  <div>
+    <% units_of_measure = RecipeIngredient.valid_uom %>
+    <%= form.select :uom, units_of_measure %>
+  </div>
+
+  <%= form.submit "Add ingredient to recipe" %>
+<% end %>

@@ -1,21 +1,23 @@
 class RecipeIngredientsController < ApplicationController
   def create
-    recipe_ingredient = RecipeIngredient.new(recipe_ingredient_params)
-    recipe_ingredient.save
+    @recipe_ingredient = RecipeIngredient.new(recipe_ingredient_params)
+    if ! @recipe_ingredient.save
+      flash[:notice] = "Quantity can't be blank"
+    end
 
     redirect_to :back
   end
 
   def update
-    recipe_ingredient = RecipeIngredient.find(params[:id])
+    recipe_ingredient = load_recipe_ingredient_from_url
     recipe_ingredient.update(recipe_ingredient_params)
 
     redirect_to :back
   end
 
   def destroy
-    ingredient_to_remove = ingredient_of_concern
-    recipe.remove_ingredient(ingredient_to_remove)
+    recipe_ingredient = load_recipe_ingredient_from_url
+    recipe_ingredient.destroy
 
     redirect_to :back
   end
@@ -26,6 +28,10 @@ class RecipeIngredientsController < ApplicationController
     params.require(:recipe_ingredient).
       permit(:ingredient_id, :qty, :uom).
       merge(recipe_id: params[:recipe_id])
+  end
+
+  def load_recipe_ingredient_from_url
+    RecipeIngredient.find(params[:id])
   end
 
   def load_recipe_from_url

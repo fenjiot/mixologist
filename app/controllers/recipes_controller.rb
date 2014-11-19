@@ -1,3 +1,5 @@
+require 'bartender'
+
 class RecipesController < ApplicationController
   skip_before_action :require_login, only: [:index, :show]
 
@@ -25,6 +27,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = load_recipe_from_url
+    @bartender = Bartender.new(@recipe)
   end
 
   def update
