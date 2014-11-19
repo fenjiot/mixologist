@@ -15,7 +15,7 @@ class RecipeIngredient < ActiveRecord::Base
                         qt
                         gallon
                         part
-                      ]
+                    ]
 
   validates :qty, presence: true
 
