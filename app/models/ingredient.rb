@@ -7,5 +7,4 @@ class Ingredient < ActiveRecord::Base
   def self.available
     all.order("name")
   end
-
 end
