@@ -4,9 +4,9 @@
 
 <%= form_for [recipe, RecipeIngredient.new] do |form| %>
   <div>
-    <% options = options_from_collection_for_select( bartender.available_ingredients,
+    <% options = options_from_collection_for_select( bartender.unused_ingredients,
                                                     "id",
-                                                    "name"
+                                                    "name",
                                                    ) %>
     <%= form.select :ingredient_id, options %>
   </div>

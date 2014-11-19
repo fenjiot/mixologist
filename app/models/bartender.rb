@@ -11,7 +11,7 @@ class Bartender
     @recipe.ingredients
   end
 
-  def available_ingredients
+  def unused_ingredients
     all_ingredients - ingredients_used
   end
 end
