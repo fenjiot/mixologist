@@ -25,6 +25,7 @@ class RecipesController < ApplicationController
 
   def edit
     @recipe = load_recipe_from_url
+    @bartender = Bartender.new(@recipe)
   end
 
   def update

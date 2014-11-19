@@ -14,13 +14,20 @@ class RecipeIngredient < ActiveRecord::Base
                         fifth
                         qt
                         gallon
-                      ]
+                        part
+                    ]
+
+  validates :qty, presence: true
 
   belongs_to :recipe
   belongs_to :ingredient
   delegate :name, to: :ingredient
 
   def self.valid_uom
-    UNIT_OF_MEASURE
+    UNIT_OF_MEASURE.sort
+  end
+
+  def used_ingredients
+    recipe.ingredients
   end
 end

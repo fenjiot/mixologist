@@ -1,9 +1,5 @@
+<%= recipe_ingredient.name %>
 <%= form_for [recipe_ingredient.recipe, recipe_ingredient] do |form| %>
-  <div>
-    <% options = options_from_collection_for_select(Ingredient.available, "id", "name") %>
-    <%= form.select :ingredient_id, options %>
-  </div>
-
   <div>
     <%= form.label :qty %>
     <%= form.text_field :qty %>
@@ -14,5 +10,7 @@
     <%= form.select :uom, units_of_measure %>
   </div>
 
-  <%= form.submit "Add ingredient to recipe" %>
+  <%= form.submit "Edit ingredient quantity" %>
 <% end %>
+
+<%= button_to "Remove ingredient", [recipe_ingredient.recipe, recipe_ingredient], method: :delete %>

@@ -1,38 +1,28 @@
-<h2>Edit drink recipe</h2>
+<h2>Edit <%= link_to @recipe.name, @recipe %></h2>
 
-<%= render "form", recipe: @recipe %>
+<%= render "recipes/form", recipe: @recipe %>
 
 <br />
 <br />
 
-<h3>Edit ingredients</h3>
-<% @recipe.recipe_ingredients.each do |ingredient| %>
-  <%= render "recipe_ingredients/edit_form", recipe_ingredient: ingredient %>
+<h3>Edit ingredients in recipe</h3>
+<% if @recipe.recipe_ingredients.present? %>
+  <% @recipe.recipe_ingredients.each do |ingredient| %>
+    <%= render "recipe_ingredients/edit_form", recipe_ingredient: ingredient %>
+    <br />
+  <% end %>
+<% else %>
+  There are no ingredients associated with this recipe.
 <% end %>
 
-MAYBE SOMETHING HERE
+<br />
+<br />
 
+<h3>Add ingredient</h3>
+<%= render "recipe_ingredients/add_form", recipe: @recipe, bartender: @bartender %>
 
-<h5>Add ingredient</h5>
-<%= form_for [@recipe, RecipeIngredient.new] do |form| %>
-  <div>
-    <% options = options_from_collection_for_select(Ingredient.available, "id", "name") %>
-    <%= form.select :ingredient_id, options %>
-  </div>
-
-  <div>
-    <%= form.label :qty %>
-    <%= form.text_field :qty %>
-  </div>
-
-  <div>
-    <% units_of_measure = RecipeIngredient.valid_uom %>
-    <%= form.select :uom, units_of_measure %>
-  </div>
-
-  <%= form.submit "Add ingredient to recipe" %>
-<% end %>
-
+<br />
+<br />
 
 <h5>Create a new ingredient</h5>
 <%= form_for Ingredient.new do |form| %>
