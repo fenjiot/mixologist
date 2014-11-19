@@ -1,28 +1,26 @@
 <div class="recipe">
   <h3><%= recipe.name %></h3>
-  <%= link_to "Edit recipe", edit_recipe_path(recipe) %>
-  <%= button_to "Delete", recipe, method: :delete %>
+  <%= link_to "Edit recipe", edit_recipe_path(recipe), class:"edit-recipe" %>
 
+  <br />
   <br />
 
   <h4>Ingredients</h4>
-  <%= link_to "Add ingredient", recipe_recipe_ingredients_path(recipe) %>
 
-  <%= form_for recipe do |form| %>
-    <% options = options_from_collection_for_select(recipe.available_ingredients, "id", "name") %>
-    <%= form.select :ingredients, options %>
-
-    <%= form.submit %>
-  <% end %>
-
-  <ul>
-    <%= render recipe.ingredients %>
-  </ul>
+  <div>
+    <ul>
+      <%= render recipe.recipe_ingredients %>
+    </ul>
+  </div>
 
   <br />
 
   <h4>Instructions</h4>
-  <div class="instructions">
+  <div class="recipe-instructions">
     <%= recipe.instructions %>
   </div>
+
+  <br />
+
+  <%= button_to "Delete", recipe, method: :delete %>
 </div>

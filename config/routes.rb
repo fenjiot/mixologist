@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :recipes do
-    resources :recipe_ingredients, only: [:create, :destroy]
+    resources :recipe_ingredients, only: [:create, :update, :destroy]
   end
 
   resources :ingredients
