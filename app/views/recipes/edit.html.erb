@@ -7,10 +7,10 @@
 
 <h3>Edit ingredients in recipe</h3>
 <% if @recipe.recipe_ingredients.present? %>
-<% @recipe.recipe_ingredients.each do |ingredient| %>
-  <%= render "recipe_ingredients/edit_form", recipe_ingredient: ingredient %>
-  <br />
-<% end %>
+  <% @recipe.recipe_ingredients.each do |ingredient| %>
+    <%= render "recipe_ingredients/edit_form", recipe_ingredient: ingredient %>
+    <br />
+  <% end %>
 <% else %>
   There are no ingredients associated with this recipe.
 <% end %>
