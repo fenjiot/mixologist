@@ -2,9 +2,44 @@
 
 <%= render "form", recipe: @recipe %>
 
-  <%= form_for @recipe do |form| %>
-    <% options = options_from_collection_for_select(@recipe.available_ingredients, "id", "name") %>
-    <%= form.select :ingredients, options %>
+<br />
+<br />
 
-    <%= form.submit %>
-  <% end %>
+<h3>Edit ingredients</h3>
+<% @recipe.recipe_ingredients.each do |ingredient| %>
+  <%= render "recipe_ingredients/edit_form", recipe_ingredient: ingredient %>
+<% end %>
+
+MAYBE SOMETHING HERE
+
+
+<h5>Add ingredient</h5>
+<%= form_for [@recipe, RecipeIngredient.new] do |form| %>
+  <div>
+    <% options = options_from_collection_for_select(Ingredient.available, "id", "name") %>
+    <%= form.select :ingredient_id, options %>
+  </div>
+
+  <div>
+    <%= form.label :qty %>
+    <%= form.text_field :qty %>
+  </div>
+
+  <div>
+    <% units_of_measure = RecipeIngredient.valid_uom %>
+    <%= form.select :uom, units_of_measure %>
+  </div>
+
+  <%= form.submit "Add ingredient to recipe" %>
+<% end %>
+
+
+<h5>Create a new ingredient</h5>
+<%= form_for Ingredient.new do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <%= form.submit %>
+<% end %>
