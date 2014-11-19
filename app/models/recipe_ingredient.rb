@@ -14,7 +14,7 @@ class RecipeIngredient < ActiveRecord::Base
                         fifth
                         qt
                         gallon
-  ]
+                      ]
 
   belongs_to :recipe
   belongs_to :ingredient
