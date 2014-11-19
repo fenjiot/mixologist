@@ -1,4 +1,4 @@
-require 'bartender'
+require "bartender"
 
 class RecipesController < ApplicationController
   skip_before_action :require_login, only: [:index, :show]

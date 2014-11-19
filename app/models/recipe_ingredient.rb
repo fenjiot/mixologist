@@ -17,7 +17,6 @@ class RecipeIngredient < ActiveRecord::Base
                         part
                       ]
 
-
   validates :qty, presence: true
 
   belongs_to :recipe
