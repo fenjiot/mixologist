@@ -9,7 +9,6 @@ class RecipeIngredient < ActiveRecord::Base
                         nip
                         #{"half pint"}
                         #{"pint (US)"}
-                        #{"pint (UK)"}
                         tenth
                         fifth
                         qt
