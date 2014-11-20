@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
   has_many :recipes
 
   has_many :recipe_likes,
-    foreign_key: :liker_id,
-    class_name: "RecipeLike",
-    dependent: :destroy
+           foreign_key: :liker_id,
+           class_name: "RecipeLike",
+           dependent: :destroy
   has_many :liked_recipes, through: :recipe_likes
 end

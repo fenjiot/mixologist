@@ -8,9 +8,9 @@ class Recipe < ActiveRecord::Base
   belongs_to :user
 
   has_many :recipe_likes,
-    foreign_key: :liked_recipe_id,
-    class_name: "RecipeLike",
-    dependent: :destroy
+           foreign_key: :liked_recipe_id,
+           class_name: "RecipeLike",
+           dependent: :destroy
   has_many :likers, through: :recipe_likes
 
   def owned_by?(potential_owner)
