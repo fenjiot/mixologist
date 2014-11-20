@@ -1,6 +1,6 @@
 module QuantityHelper
   def pretty_number(qty)
-    number_with_precision( qty,
+    number_with_precision(qty,
                           precision: 3,
                           strip_insignificant_zeros: true,
                          )
