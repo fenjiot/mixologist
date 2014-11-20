@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :recipes do
     resources :recipe_ingredients, only: [:create, :update, :destroy]
+    resources :recipe_likes, only: [:create, :update, :destroy]
   end
 
   resources :ingredients

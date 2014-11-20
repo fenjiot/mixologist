@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141119220507) do
+ActiveRecord::Schema.define(version: 20141120170703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,11 +38,24 @@ ActiveRecord::Schema.define(version: 20141119220507) do
   add_index "recipe_ingredients", ["recipe_id", "ingredient_id"], name: "index_recipe_ingredients_on_recipe_id_and_ingredient_id", unique: true, using: :btree
   add_index "recipe_ingredients", ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id", using: :btree
 
+  create_table "recipe_likes", force: true do |t|
+    t.integer  "liker_id",        null: false
+    t.integer  "liked_recipe_id", null: false
+    t.integer  "rating"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "recipe_likes", ["liked_recipe_id"], name: "index_recipe_likes_on_liked_recipe_id", using: :btree
+  add_index "recipe_likes", ["liker_id", "liked_recipe_id"], name: "index_recipe_likes_on_liker_id_and_liked_recipe_id", unique: true, using: :btree
+  add_index "recipe_likes", ["liker_id"], name: "index_recipe_likes_on_liker_id", using: :btree
+
   create_table "recipes", force: true do |t|
     t.string   "name",         null: false
     t.text     "instructions", null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "user_id",      null: false
   end
 
   create_table "users", force: true do |t|
