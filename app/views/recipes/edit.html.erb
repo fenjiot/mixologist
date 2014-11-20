@@ -7,7 +7,7 @@
 
 <h3>Edit ingredients in recipe</h3>
 <% if @recipe.recipe_ingredients.present? %>
-  <% @recipe.recipe_ingredients.each do |ingredient| %>
+  <% @recipe.recipe_ingredients.order("qty DESC").each do |ingredient| %>
     <%= render "recipe_ingredients/edit_form", recipe_ingredient: ingredient %>
     <br />
   <% end %>

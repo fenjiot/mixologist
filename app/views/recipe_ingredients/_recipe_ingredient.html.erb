@@ -1,7 +1,6 @@
 <div>
   <li>
-    <%= recipe_ingredient.qty %>
-    <%= recipe_ingredient.uom %>
+    <%= pretty_amount(recipe_ingredient.qty, recipe_ingredient.uom) %>
     <%= link_to recipe_ingredient.name, recipe_ingredient.ingredient %>
   </li>
 </div>
