@@ -1,22 +1,24 @@
 class RecipeIngredient < ActiveRecord::Base
-  UNIT_OF_MEASURE = %W[ ml
-                        oz
-                        dash
-                        tsp
-                        tbsp
-                        shot
-                        cup
-                        nip
-                        #{"half pint"}
-                        #{"pint (US)"}
-                        tenth
-                        fifth
-                        qt
-                        gallon
-                        part
-                    ]
+  UNIT_OF_MEASURE = [
+    "ml",
+    "oz",
+    "dash",
+    "tsp",
+    "tbsp",
+    "shot",
+    "cup",
+    "nip",
+    "half pint",
+    "pint (US)",
+    "tenth",
+    "fifth",
+    "qt",
+    "gallon",
+    "part",
+  ]
 
   validates :qty, presence: true
+  validates :uom, presence: true
 
   belongs_to :recipe
   belongs_to :ingredient

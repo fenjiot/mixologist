@@ -49,7 +49,8 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).
-      permit(:name, :instructions)
+      permit(:name, :instructions).
+      merge(user_id: current_user.id)
   end
 
   def load_recipe_from_url
