@@ -7,17 +7,17 @@ class Recipe < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :recipe_likes,
-           foreign_key: :liked_recipe_id,
-           class_name: "RecipeLike",
+  has_many :ratings,
+           foreign_key: :rated_recipe_id,
+           class_name: "Rating",
            dependent: :destroy
-  has_many :likers, through: :recipe_likes
+  has_many :raters, through: :ratings
 
   def owned_by?(potential_owner)
     user == potential_owner
   end
 
   def rated_by?(potential_user)
-    recipe_likes.find_by_liker_id(potential_user)
+    ratings.find_by_rater_id(potential_user)
   end
 end

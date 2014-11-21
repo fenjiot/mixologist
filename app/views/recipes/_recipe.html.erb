@@ -9,12 +9,12 @@
 
   <% if signed_in? %>
     <%= form_for [recipe, recipe_ballot(recipe)] do |form| %>
-      <%= form.collection_radio_buttons :rating,
+      <%= form.collection_radio_buttons :value,
                                         [[1, "1"],[2,"2"],[3,"Meh"],[4,"4"],[5,"5"]],
                                         :first,
                                         :last,
                                         { item_wrapper_tag: false } do |button| %>
-        <%=  button.radio_button + button.label(class: "rating_button") %>
+                <%=  button.radio_button + button.label(class: "value_button") %>
       <% end %>
 
       <%= form.submit %>

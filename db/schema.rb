@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120170703) do
+ActiveRecord::Schema.define(version: 20141121164705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,18 @@ ActiveRecord::Schema.define(version: 20141120170703) do
 
   add_index "ingredients", ["name"], name: "index_ingredients_on_name", unique: true, using: :btree
 
+  create_table "ratings", force: true do |t|
+    t.integer  "rater_id",        null: false
+    t.integer  "rated_recipe_id", null: false
+    t.integer  "value",           null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "ratings", ["rated_recipe_id"], name: "index_ratings_on_rated_recipe_id", using: :btree
+  add_index "ratings", ["rater_id", "rated_recipe_id"], name: "index_ratings_on_rater_id_and_rated_recipe_id", unique: true, using: :btree
+  add_index "ratings", ["rater_id"], name: "index_ratings_on_rater_id", using: :btree
+
   create_table "recipe_ingredients", force: true do |t|
     t.integer  "recipe_id",     null: false
     t.integer  "ingredient_id", null: false
@@ -37,18 +49,6 @@ ActiveRecord::Schema.define(version: 20141120170703) do
   add_index "recipe_ingredients", ["ingredient_id"], name: "index_recipe_ingredients_on_ingredient_id", using: :btree
   add_index "recipe_ingredients", ["recipe_id", "ingredient_id"], name: "index_recipe_ingredients_on_recipe_id_and_ingredient_id", unique: true, using: :btree
   add_index "recipe_ingredients", ["recipe_id"], name: "index_recipe_ingredients_on_recipe_id", using: :btree
-
-  create_table "recipe_likes", force: true do |t|
-    t.integer  "liker_id",        null: false
-    t.integer  "liked_recipe_id", null: false
-    t.integer  "rating"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  add_index "recipe_likes", ["liked_recipe_id"], name: "index_recipe_likes_on_liked_recipe_id", using: :btree
-  add_index "recipe_likes", ["liker_id", "liked_recipe_id"], name: "index_recipe_likes_on_liker_id_and_liked_recipe_id", unique: true, using: :btree
-  add_index "recipe_likes", ["liker_id"], name: "index_recipe_likes_on_liker_id", using: :btree
 
   create_table "recipes", force: true do |t|
     t.string   "name",         null: false
