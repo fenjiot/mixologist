@@ -18,13 +18,13 @@ class RecipeIngredient < ActiveRecord::Base
   ]
 
   validates :qty, presence: true
-  validates :uom, presence: true
+  validates :unit_of_measure, presence: true
 
   belongs_to :recipe
   belongs_to :ingredient
   delegate :name, to: :ingredient
 
-  def self.valid_uom
+  def self.valid_units_of_measure
     UNIT_OF_MEASURE.sort
   end
 

@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   skip_before_action :require_login, only: [:index, :show]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.all.order("name")
   end
 
   def new

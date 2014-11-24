@@ -26,7 +26,7 @@ class RecipeIngredientsController < ApplicationController
 
   def recipe_ingredient_params
     params.require(:recipe_ingredient).
-      permit(:ingredient_id, :qty, :uom).
+      permit(:ingredient_id, :qty, :unit_of_measure).
       merge(recipe_id: params[:recipe_id])
   end
 

@@ -6,7 +6,7 @@ module QuantityHelper
                          )
   end
 
-  def pretty_amount(qty, uom)
-    pluralize(pretty_number(qty), uom)
+  def pretty_amount(qty, unit_of_measure)
+    pluralize(pretty_number(qty), unit_of_measure)
   end
 end

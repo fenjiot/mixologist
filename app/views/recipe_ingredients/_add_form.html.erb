@@ -17,8 +17,8 @@
   </div>
 
   <div>
-    <% units_of_measure = RecipeIngredient.valid_uom %>
-    <%= form.select :uom, units_of_measure %>
+    <% units_of_measure = RecipeIngredient.valid_units_of_measure %>
+    <%= form.select :unit_of_measure, units_of_measure %>
   </div>
 
   <%= form.submit "Add ingredient to recipe" %>
