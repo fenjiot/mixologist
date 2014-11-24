@@ -22,7 +22,9 @@ class Recipe < ActiveRecord::Base
   end
 
   def average_rating
-    total_value_of_ratings / number_of_ratings.to_f
+    if ratings.present?
+      total_value_of_ratings / number_of_ratings.to_f
+    end
   end
 
   private
@@ -32,6 +34,6 @@ class Recipe < ActiveRecord::Base
   end
 
   def number_of_ratings
-    ratings.count
+    ratings.size
   end
 end
