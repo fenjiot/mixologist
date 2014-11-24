@@ -29,11 +29,11 @@ class Recipe < ActiveRecord::Base
 
   def total_value_of_ratings
     value = 0
-    self.ratings.each { |rating| value += rating.value }
+    ratings.each { |rating| value += rating.value }
     value
   end
 
   def number_of_ratings
-    self.ratings.count
+    ratings.count
   end
 end
