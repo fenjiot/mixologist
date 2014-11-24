@@ -1,24 +1,24 @@
 class RatingsController < ApplicationController
   def create
     Rating.create(rating_params)
-    recipe = load_recipe_from_url
 
+    recipe = load_recipe_from_url
     redirect_to recipe
   end
 
   def update
     rating = load_rating_from_url
     rating.update(rating_params)
-    recipe = load_recipe_from_url
 
+    recipe = load_recipe_from_url
     redirect_to recipe
   end
 
   def destroy
     rating = load_rating_from_url
     rating.destroy
-    recipe = load_recipe_from_url
 
+    recipe = load_recipe_from_url
     redirect_to recipe
   end
 
