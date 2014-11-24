@@ -20,4 +20,20 @@ class Recipe < ActiveRecord::Base
   def rated_by?(potential_user)
     ratings.find_by_rater_id(potential_user)
   end
+
+  def average_rating
+    total_value_of_ratings.to_f / number_of_ratings.to_f
+  end
+
+  private
+
+  def total_value_of_ratings
+    value = 0
+    self.ratings.each { |rating| value += rating.value }
+    value
+  end
+
+  def number_of_ratings
+    self.ratings.count
+  end
 end

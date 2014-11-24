@@ -6,14 +6,14 @@ class RatingsController < ApplicationController
   end
 
   def update
-    rating = load_recipe_like_from_url
+    rating = load_rating_from_url
     rating.update(rating_params)
 
     redirect_to :back
   end
 
   def destroy
-    rating = load_recipe_like_from_url
+    rating = load_rating_from_url
     rating.destroy
 
     redirect_to :back
@@ -29,7 +29,7 @@ class RatingsController < ApplicationController
            )
   end
 
-  def load_recipe_like_from_url
+  def load_rating_from_url
     Rating.find(params[:id])
   end
 end

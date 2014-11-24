@@ -7,17 +7,20 @@
 
   <br />
 
+  <h5>Average rating: <%= recipe.average_rating %></h5>
+
   <% if signed_in? %>
-    <%= form_for [recipe, recipe_ballot(recipe)] do |form| %>
+    <%= form_for [recipe, recipe_ballot(recipe)], html: {class: "rating_ballot"} do |form| %>
       <%= form.collection_radio_buttons :value,
-                                        [[1, "1"],[2,"2"],[3,"Meh"],[4,"4"],[5,"5"]],
+                                        Rating::VALUES,
                                         :first,
                                         :last,
                                         { item_wrapper_tag: false } do |button| %>
-                <%=  button.radio_button + button.label(class: "value_button") %>
+                                        <%= button.radio_button(class: "rating_button") %>
+                                        <%= button.label(class: "value_button") %>
       <% end %>
 
-      <%= form.submit %>
+      <%= form.submit class: "rating_submit" %>
     <% end %>
 
     <% if recipe.rated_by?(current_user) %>
