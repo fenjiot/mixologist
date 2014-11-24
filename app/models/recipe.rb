@@ -8,9 +8,9 @@ class Recipe < ActiveRecord::Base
   belongs_to :user
 
   has_many :ratings,
-           foreign_key: :rated_recipe_id,
-           class_name: "Rating",
-           dependent: :destroy
+    foreign_key: :rated_recipe_id,
+    class_name: "Rating",
+    dependent: :destroy
   has_many :raters, through: :ratings
 
   def owned_by?(potential_owner)
@@ -18,19 +18,17 @@ class Recipe < ActiveRecord::Base
   end
 
   def rated_by?(potential_user)
-    ratings.find_by_rater_id(potential_user)
+    ratings.find_by(rater_id: potential_user)
   end
 
   def average_rating
-    total_value_of_ratings.to_f / number_of_ratings.to_f
+    total_value_of_ratings / number_of_ratings.to_f
   end
 
   private
 
   def total_value_of_ratings
-    value = 0
-    ratings.each { |rating| value += rating.value }
-    value
+    ratings.sum(:value)
   end
 
   def number_of_ratings

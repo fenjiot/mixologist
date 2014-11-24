@@ -24,9 +24,10 @@ class RatingsController < ApplicationController
   def rating_params
     params.require(:rating).
       permit(:value).
-      merge(rated_recipe_id: params[:recipe_id],
-            rater_id: current_user.id,
-           )
+      merge(
+        rated_recipe_id: params[:recipe_id],
+        rater_id: current_user.id,
+      )
   end
 
   def load_rating_from_url
