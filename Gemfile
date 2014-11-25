@@ -13,6 +13,7 @@ gem 'select2-rails'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
+  gem 'nokogiri'
   gem 'pry'
 end
 
