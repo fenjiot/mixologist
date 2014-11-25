@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.all.includes(:recipes).order("name")
   end
 
   def new
@@ -19,6 +19,7 @@ class IngredientsController < ApplicationController
 
   def show
     @ingredient = load_ingredient_from_url
+    @recipes = @ingredient.recipes
   end
 
   def edit

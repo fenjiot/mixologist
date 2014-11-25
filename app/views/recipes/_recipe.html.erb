@@ -20,9 +20,13 @@
   <h4>Ingredients</h4>
 
   <div>
-    <ul>
-      <%= render recipe.recipe_ingredients.order("qty DESC") %>
-    </ul>
+    <% if recipe.recipe_ingredients.present? %>
+      <ul>
+        <%= render recipe.recipe_ingredients.order("qty DESC") %>
+      </ul>
+    <% else %>
+      There haven't been any ingredients added yet!
+    <% end %>
   </div>
 
   <br />

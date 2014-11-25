@@ -1,8 +1,7 @@
 <div>
   <li>
-    <%# <%= ingredient.recipe_ingredients.qty %>
     <%= link_to ingredient.name, ingredient %>
-    - 
-    <%= ingredient.description.presence || ingredient.name %>
+    - used in: 
+    <%= pluralize(ingredient.recipes.size, "drink recipe") %>
   </li>
 </div>

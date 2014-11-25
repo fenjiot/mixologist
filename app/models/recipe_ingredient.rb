@@ -15,6 +15,8 @@ class RecipeIngredient < ActiveRecord::Base
     "qt",
     "gallon",
     "part",
+    "slice",
+    "piece",
   ]
 
   validates :qty, presence: true
@@ -26,9 +28,5 @@ class RecipeIngredient < ActiveRecord::Base
 
   def self.valid_units_of_measure
     UNIT_OF_MEASURE.sort
-  end
-
-  def used_ingredients
-    recipe.ingredients
   end
 end
