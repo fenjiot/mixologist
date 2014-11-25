@@ -1,6 +1,6 @@
 <%= render "error_messages", target: recipe %>
 
-<%= form_for recipe do |form| %>
+<%= form_for recipe, id: "recipe" do |form| %>
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>

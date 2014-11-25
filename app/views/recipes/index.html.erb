@@ -1,5 +1,9 @@
-<h2>Options</h2>
+<%= form_tag recipes_path, method: :get do %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", name: nil %>
+<% end %>
 
+<h2>Options</h2>
 <%= link_to "Add new recipe", new_recipe_path %>
 <br />
 <br />
@@ -9,6 +13,7 @@
   <% @recipes.each do |recipe| %>
     <li>
       <%= link_to recipe.name, recipe_path(recipe) %>
+      - ingredients: <%= recipe.ingredients.count %>
     </li>
   <% end %>
 </ul>
