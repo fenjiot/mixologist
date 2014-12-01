@@ -30,7 +30,7 @@
       <% end %>
 
       <% if @results.present? %>
-        <% if @results.class != String %>
+        <% if @results.is_a?(Array) %>
           <h4>Recipes mentioning "<%= params[:search] %>"</h4>
           <ul>
             <%= render "searches/results", results: @results %>
