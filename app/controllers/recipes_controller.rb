@@ -3,7 +3,6 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all.order("name")
-    @results = Search.new(params[:search]).results
   end
 
   def new

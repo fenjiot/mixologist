@@ -1,0 +1,14 @@
+<% if @results.present? %>
+  <h4>Results for "<%= params[:search] %>"</h4>
+
+  <ul>
+    <%= render @results %>
+  </ul>
+
+  <br />
+
+<% else %>
+  <br />
+
+  <h4>Nothing to see here. Maybe try for something else.</h4>
+<% end %>

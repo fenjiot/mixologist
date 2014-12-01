@@ -9,7 +9,7 @@ class Search < ActiveRecord::Base
 
   def results
     if @query.present?
-      carry_on_with_serach
+      carry_on_with_serach(@query)
     else
       Search.none
     end
@@ -17,18 +17,9 @@ class Search < ActiveRecord::Base
 
   private
 
-  def carry_on_with_serach
-    result = self.class.
-      search(@query).preload(:searchable).
+  def carry_on_with_serach(query)
+    self.class.
+      search(query).preload(:searchable).
       map(&:searchable).uniq
-    answer(result)
-  end
-
-  def answer(result)
-    if result.present?
-      result
-    else
-      return "No references to #{@query} were found"
-    end
   end
 end
