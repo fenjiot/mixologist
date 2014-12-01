@@ -1,9 +1,9 @@
-<h2>Options</h2>
-<%= link_to "Add new recipe", new_recipe_path %>
-<br />
-<br />
+<% if signed_in? %>
+  <h3><%= link_to "Add new recipe", new_recipe_path %></h3>
+  <br />
+<% end %>
 
-<h3>Recipies</h3>
+<h3>Cocktails</h3>
 <ul>
   <% @recipes.each do |recipe| %>
     <li>

@@ -1,43 +1,46 @@
-<div class="recipe">
-  <h3><%= recipe.name %></h3>
-  <% if recipe.owned_by?(current_user) %>
-    <%= link_to "Edit recipe", edit_recipe_path(recipe), class:"edit-recipe" %>
-  <br />
-  <% end %>
-
-  <br />
-
-  <h5>Average rating: <%= recipe.average_rating %></h5>
-
-  <% if signed_in? %>
-    <%= render "ratings/form", recipe: recipe %>
-
-    <% if recipe.rated_by?(current_user) %>
-      <%= button_to "Unlike recipe", [recipe, recipe_ballot(recipe)], method: :delete %>
+<div class="side-image">
+  <div class="images-wrapper"></div>
+  <div class="recipe">
+    <h3><%= recipe.name %></h3>
+    <% if recipe.owned_by?(current_user) %>
+      <%= link_to "Edit recipe", edit_recipe_path(recipe), class:"edit-recipe" %>
+    <br />
     <% end %>
-  <% end %>
 
-  <h4>Ingredients</h4>
+    <br />
 
-  <div>
-    <% if recipe.recipe_ingredients.present? %>
-      <ul>
-        <%= render recipe.recipe_ingredients.order("qty DESC") %>
-      </ul>
-    <% else %>
-      There haven't been any ingredients added yet!
+    <h5>Average rating: <%= recipe.average_rating %></h5>
+
+    <% if signed_in? %>
+      <%= render "ratings/form", recipe: recipe %>
+      <% if recipe.rated_by?(current_user) %>
+        <%= button_to "Unlike recipe", [recipe, recipe_ballot(recipe)], method: :delete %>
+      <% end %>
+      <br />
+    <% end %>
+
+    <h4>Ingredients</h4>
+
+    <div>
+      <% if recipe.recipe_ingredients.present? %>
+        <ul>
+          <%= render recipe.recipe_ingredients.order("qty DESC") %>
+        </ul>
+      <% else %>
+        There haven't been any ingredients added yet!
+      <% end %>
+    </div>
+
+    <br />
+
+    <h4>Instructions</h4>
+    <div class="recipe-instructions">
+      <%= recipe.instructions %>
+    </div>
+
+    <br />
+    <% if recipe.owned_by?(current_user) %>
+      <%= button_to "Delete", recipe, method: :delete %>
     <% end %>
   </div>
-
-  <br />
-
-  <h4>Instructions</h4>
-  <div class="recipe-instructions">
-    <%= recipe.instructions %>
-  </div>
-
-  <br />
-  <% if recipe.owned_by?(current_user) %>
-    <%= button_to "Delete", recipe, method: :delete %>
-  <% end %>
 </div>

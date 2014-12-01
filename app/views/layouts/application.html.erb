@@ -11,8 +11,6 @@
   <div class="container">
     <header class="session">
       <% if signed_in? %>
-        <%= link_to "Recipes", recipes_path %> |
-        <%= link_to "Ingredients", ingredients_path %> |
         <%= current_user.email %>
         <%= link_to "Sign out", session_path, method: :delete %>
       <% else %>
@@ -23,6 +21,9 @@
 
     <h1><%= link_to "Mixologistr", root_path %></h1>
 
+    <%= link_to "Cocktail recipes", recipes_path %> |
+    <%= link_to "Ingredients", ingredients_path %>
+    <br />
     <%= render "searches/form", query: @query %>
 
     <div class="content">

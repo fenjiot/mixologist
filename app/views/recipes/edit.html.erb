@@ -1,35 +1,34 @@
 <h2>Edit <%= link_to @recipe.name, @recipe %></h2>
 
-<%= render "recipes/form", recipe: @recipe %>
+<div class="underscore-box">
+  <%= render "recipes/form", recipe: @recipe %>
+</div>
 
-<br />
-<br />
-
-<h3>Edit ingredients in recipe</h3>
-<% if @recipe.recipe_ingredients.present? %>
-  <% @recipe.recipe_ingredients.order("qty DESC").each do |ingredient| %>
-    <%= render "recipe_ingredients/edit_form", recipe_ingredient: ingredient %>
-    <br />
+<h3>Ingredients - edit</h3>
+<div class="underscore-box">
+  <% if @recipe.recipe_ingredients.present? %>
+    <% @recipe.recipe_ingredients.order("qty DESC").each do |ingredient| %>
+      <%= render "recipe_ingredients/edit_form", recipe_ingredient: ingredient %>
+      <br />
+    <% end %>
+  <% else %>
+    There are no ingredients associated with this recipe.
   <% end %>
-<% else %>
-  There are no ingredients associated with this recipe.
-<% end %>
-
-<br />
-<br />
+</div>
 
 <h3>Add ingredient</h3>
-<%= render "recipe_ingredients/add_form", recipe: @recipe, bartender: @bartender %>
+<div class="underscore-box">
+  <%= render "recipe_ingredients/add_form", recipe: @recipe, bartender: @bartender %>
+</div>
 
-<br />
-<br />
+<h3>Suggest a new ingredient:</h3>
+<div class="underscore-box">
+  <%= form_for Ingredient.new do |form| %>
+    <div>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
 
-<h5>Create a new ingredient</h5>
-<%= form_for Ingredient.new do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <%= form.submit %>
-<% end %>
+    <%= form.submit %>
+  <% end %>
+</div>
