@@ -23,6 +23,25 @@
 
     <h1><%= link_to "Mixologist", root_path %></h1>
 
+    <div class="search">
+      <%= form_tag recipes_path, method: :get do %>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "Search", name: nil %>
+      <% end %>
+
+      <% if @results.present? %>
+        <% if @results.is_a?(Array) %>
+          <h4>Recipes mentioning "<%= params[:search] %>"</h4>
+          <ul>
+            <%= render "searches/results", results: @results %>
+          </ul>
+        <% else %>
+          <%= @results %>
+          <br />
+        <% end %>
+      <% end %>
+    </div>
+
     <div class="content">
       <%= yield %>
     </div>
