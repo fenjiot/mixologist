@@ -9,7 +9,9 @@ gem 'neat'
 gem 'pg'
 gem 'rails', '4.1.6'
 gem 'sass-rails', '~> 4.0.3'
+gem 'scenic'
 gem 'select2-rails'
+gem 'textacular', '~> 3.0'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do

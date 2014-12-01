@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124202431) do
+ActiveRecord::Schema.define(version: 20141130215417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "pg_trgm"
 
   create_table "ingredients", force: true do |t|
     t.string   "name",        null: false
@@ -67,4 +68,25 @@ ActiveRecord::Schema.define(version: 20141124202431) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+        create_view :searches, sql_definition:<<-SQL
+          SELECT recipes.id AS searchable_id,
+    'Recipe'::text AS searchable_type,
+    recipes.name AS term
+   FROM recipes
+UNION
+ SELECT recipes.id AS searchable_id,
+    'Recipe'::text AS searchable_type,
+    recipes.instructions AS term
+   FROM recipes
+UNION
+ SELECT ingredients.id AS searchable_id,
+    'Ingredient'::text AS searchable_type,
+    ingredients.name AS term
+   FROM ingredients
+UNION
+ SELECT ingredients.id AS searchable_id,
+    'Ingredient'::text AS searchable_type,
+    ingredients.description AS term
+   FROM ingredients;
+        SQL
 end
