@@ -23,13 +23,7 @@
 
     <h1><%= link_to "Mixologistr", root_path %></h1>
 
-    <div class="search">
-      <%= form_tag searches_path, method: :get do %>
-        <%= text_field_tag :search, params[:search] %>
-        <%= submit_tag "Search", name: nil %>
-      <% end %>
-
-    </div>
+    <%= render "searches/form", query: @query %>
 
     <div class="content">
       <%= yield %>
