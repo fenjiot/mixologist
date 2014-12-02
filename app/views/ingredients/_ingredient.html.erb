@@ -1,6 +1,6 @@
 <div>
   <li>
-    <%= link_to ingredient.name, ingredient %>
+    <%= link_to ingredient.name.capitalize, ingredient %>
     - in
     <%= pluralize(ingredient.recipes.size, "recipe") %>
   </li>

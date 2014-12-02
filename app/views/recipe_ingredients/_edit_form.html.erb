@@ -1,4 +1,4 @@
-<%= recipe_ingredient.name %>
+<%= recipe_ingredient.name.upcase %>
 <%= form_for [recipe_ingredient.recipe, recipe_ingredient] do |form| %>
   <div>
     <%= form.label :qty %>
