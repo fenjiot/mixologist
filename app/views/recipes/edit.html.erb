@@ -3,9 +3,10 @@
 <%= render "recipes/form", recipe: @recipe %>
 
 <br />
+<hr />
 <br />
 
-<h3>Edit ingredients in recipe</h3>
+<h3>Ingredients - edit</h3>
 <% if @recipe.recipe_ingredients.present? %>
   <% @recipe.recipe_ingredients.order("qty DESC").each do |ingredient| %>
     <%= render "recipe_ingredients/edit_form", recipe_ingredient: ingredient %>
@@ -16,15 +17,17 @@
 <% end %>
 
 <br />
+<hr />
 <br />
 
 <h3>Add ingredient</h3>
 <%= render "recipe_ingredients/add_form", recipe: @recipe, bartender: @bartender %>
 
 <br />
+<hr />
 <br />
 
-<h5>Create a new ingredient</h5>
+<h5>Suggest a new ingredient:</h5>
 <%= form_for Ingredient.new do |form| %>
   <div>
     <%= form.label :name %>
