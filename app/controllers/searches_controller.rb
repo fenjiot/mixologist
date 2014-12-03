@@ -10,7 +10,7 @@ class SearchesController < ApplicationController
   def processed_results(raw_results)
     results = []
     grouped_results = raw_results.group_by(&:class)
-    grouped_results.each do |key, group|
+    grouped_results.each do |_key, group|
       group.each do |item|
         results << item
       end
