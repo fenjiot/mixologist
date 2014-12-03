@@ -14,4 +14,8 @@ class Bartender
   def unused_ingredients
     all_ingredients - ingredients_used
   end
+
+  def ingredients
+    @ingredients ||= @recipe.recipe_ingredients.order("qty DESC")
+  end
 end
