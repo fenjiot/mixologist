@@ -1,11 +1,16 @@
 <% if @results.present? %>
-  <h4><%= @results.count %> results for "<%= params[:search] %>"</h4>
-
+  <h4>Results for "<%= params[:search] %>"</h4>
+  <br />
   <ul>
-    <% @results.each do |result| %>
-      <li>
-        <%= link_to result.name, result %>
-      </li>
+    <% @results.each do |key, result| %>
+      <h2><%= key %> matches</h2>
+      <div class="underscore-box">
+        <% result.each do |item| %>
+          <li>
+            <%= link_to item.name.capitalize, item %>
+          </li>
+        <% end %>
+      </div>
     <% end %>
   </ul>
 

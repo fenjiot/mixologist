@@ -9,7 +9,8 @@ class Search < ActiveRecord::Base
 
   def results
     if @query.present?
-      carry_on_with_serach(@query)
+      result = execute_search(@query).group_by(&:class)
+      result.sort_by { |s| s.to_s }
     else
       Search.none
     end
@@ -17,7 +18,7 @@ class Search < ActiveRecord::Base
 
   private
 
-  def carry_on_with_serach(query)
+  def execute_search(query)
     self.class.
       search(query).preload(:searchable).
       map(&:searchable).uniq
