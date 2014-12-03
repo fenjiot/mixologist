@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
 
     if @recipe.save
-      redirect_to recipes_path
+      redirect_to @recipe
     else
       render :new
     end
@@ -49,7 +49,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).
-      permit(:name, :instructions).
+      permit(:name, :instructions, :serves).
       merge(user_id: current_user.id)
   end
 

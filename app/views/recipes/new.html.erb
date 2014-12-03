@@ -1,17 +1,2 @@
-<%= render "error_messages", target: @recipe %>
-
 <h2>Add a new recipe</h2>
-
-<%= form_for @recipe do |form| %>
-  <div>
-    <%= form.label "Drink name" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :instructions %>
-    <%= form.text_area :instructions %>
-  </div>
-
-  <%= form.submit %>
-<% end %>
+<%= render "form", recipe: @recipe %>

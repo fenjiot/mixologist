@@ -1,8 +1,12 @@
 <% if @results.present? %>
-  <h4>Results for "<%= params[:search] %>"</h4>
+  <h4><%= @results.count %> results for "<%= params[:search] %>"</h4>
 
   <ul>
-    <%= render @results %>
+    <% @results.each do |result| %>
+      <li>
+        <%= link_to result.name, result %>
+      </li>
+    <% end %>
   </ul>
 
   <br />

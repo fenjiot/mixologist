@@ -1,13 +1,12 @@
 <h2>Edit <%= link_to @recipe.name, @recipe %></h2>
-
 <div class="underscore-box">
   <%= render "recipes/form", recipe: @recipe %>
 </div>
 
-<h3>Ingredients - edit</h3>
+<h3>Ingredients ( <%= @bartender.ingredients.count %> ) - edit</h3>
 <div class="underscore-box">
-  <% if @recipe.recipe_ingredients.present? %>
-    <% @recipe.recipe_ingredients.order("qty DESC").each do |ingredient| %>
+  <% if @bartender.ingredients.present? %>
+    <% @bartender.ingredients.each do |ingredient| %>
       <%= render "recipe_ingredients/edit_form", recipe_ingredient: ingredient %>
       <br />
     <% end %>
@@ -23,12 +22,5 @@
 
 <h3>Suggest a new ingredient:</h3>
 <div class="underscore-box">
-  <%= form_for Ingredient.new do |form| %>
-    <div>
-      <%= form.label :name %>
-      <%= form.text_field :name %>
-    </div>
-
-    <%= form.submit %>
-  <% end %>
+  <%= render "ingredients/form", ingredient: Ingredient.new %>
 </div>

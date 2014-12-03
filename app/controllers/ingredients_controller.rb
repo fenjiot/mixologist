@@ -1,4 +1,6 @@
 class IngredientsController < ApplicationController
+  skip_before_action :require_login, only: [:index, :show]
+
   def index
     @ingredients = Ingredient.all.includes(:recipes).order("name")
   end
