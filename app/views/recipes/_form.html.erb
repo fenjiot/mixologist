@@ -7,6 +7,12 @@
   </div>
 
   <div>
+    <%= form.label "Serves (people)" %>
+    <% people = (1..100) %>
+    <%= form.select :serves, people %>
+  </div>
+
+  <div>
     <%= form.label :instructions %>
     <%= form.text_area :instructions %>
   </div>
