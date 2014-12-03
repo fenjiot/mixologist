@@ -19,12 +19,16 @@
       <% end %>
     </header>
 
+    <div class="float-right">
+      <%= render "searches/form", query: @query %>
+    </div>
+
     <h1><%= link_to "Mixologistr", root_path %></h1>
 
-    <%= link_to "Cocktail recipes", recipes_path %> |
-    <%= link_to "Ingredients", ingredients_path %>
-    <br />
-    <%= render "searches/form", query: @query %>
+    <div class="menu">
+      <%= link_to "Cocktail recipes", recipes_path %> |
+      <%= link_to "Ingredients", ingredients_path %>
+    </div>
 
     <div class="content">
       <%= yield %>
