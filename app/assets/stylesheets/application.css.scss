@@ -1,13 +1,16 @@
+// Base styling
 @import "bourbon";
 @import "base/base";
 @import "neat";
 @import "select2";
 
-@import "container";
-@import "menu";
-@import "content";
-@import "recipe";
-@import "rating-form";
-@import "search-bar";
+// App specific CSS
+@import "variables";
 
+@import "container";
+@import "content";
+@import "menu";
+@import "rating";
+@import "recipe";
+@import "search";
 @import "standard-useful-bits";
