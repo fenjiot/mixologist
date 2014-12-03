@@ -10,7 +10,7 @@ class Search < ActiveRecord::Base
   def results
     if @query.present?
       result = execute_search(@query).group_by(&:class)
-      result.sort_by { |s| s.to_s }
+      result.sort_by { |key, _group| key.to_s }
     else
       Search.none
     end
