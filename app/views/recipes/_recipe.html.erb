@@ -22,7 +22,6 @@
     <h4>Serves</h4>
     <% if recipe.owned_by?(current_user) %>
       <%= link_to "Edit", edit_recipe_path(recipe), class:"edit-recipe" %>
-    <br />
     <% end %>
     <div>
       <%= pluralize(recipe.serves, "person") %>
@@ -49,7 +48,6 @@
     <h4>Instructions</h4>
     <% if recipe.owned_by?(current_user) %>
       <%= link_to "Edit", edit_recipe_path(recipe), class:"edit-recipe" %>
-    <br />
     <% end %>
     <div class="recipe-instructions">
       <%= recipe.instructions %>
