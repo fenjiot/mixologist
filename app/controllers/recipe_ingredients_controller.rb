@@ -26,9 +26,11 @@ class RecipeIngredientsController < ApplicationController
   private
 
   def qty_in_base_units
-    Jigger.new.convert_to_base_units(params[:recipe_ingredient][:qty],
-                                     params[:recipe_ingredient][:unit_of_measure]
-                                    )
+    Jigger.
+      new.
+      convert_to_base_units(params[:recipe_ingredient][:qty],
+                            params[:recipe_ingredient][:unit_of_measure]
+        )
   end
 
   def recipe_ingredient_params

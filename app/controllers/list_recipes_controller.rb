@@ -2,7 +2,7 @@ class ListRecipesController < ApplicationController
   def create
     @list_recipe = ListRecipe.new(list_recipe_params)
 
-    if ! @list_recipe.save
+    unless @list_recipe.save
       flash[:notice] = "Quantity can't be blank"
     end
 
