@@ -27,7 +27,7 @@ class Recipe < ActiveRecord::Base
 
   def average_rating
     if ratings.present?
-      (total_value_of_ratings / number_of_ratings.to_f)
+      (total_value_of_ratings / number_of_ratings).to_f
     end
   end
 
