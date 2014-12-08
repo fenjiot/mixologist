@@ -27,6 +27,7 @@ class Barback
         all_the_ingredients << hash
       end
     end
+    binding.pry
     all_the_ingredients
   end
 
