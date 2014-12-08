@@ -1,13 +1,13 @@
 class RecipeIngredient < ActiveRecord::Base
   UNIT_OF_MEASURE = [
-    "milliliter",
     "fluid-ounce",
-    "teaspoon",
-    "tablespoon",
     "cup",
+    "gallon",
+    "milliliter",
     "pint",
     "quart",
-    "gallon",
+    "tablespoon",
+    "teaspoon",
   ]
 
   validates :qty, presence: true
@@ -18,6 +18,10 @@ class RecipeIngredient < ActiveRecord::Base
   delegate :name, to: :ingredient
 
   def self.valid_units_of_measure
-    UNIT_OF_MEASURE.sort
+    UNIT_OF_MEASURE
+  end
+
+  def amount_to_show
+    Jigger.new.convert_to_show(self)
   end
 end
