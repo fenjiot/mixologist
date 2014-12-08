@@ -28,7 +28,7 @@ class ListRecipesController < ApplicationController
 
   def list_recipe_params
     params.require(:list_recipe).
-      permit(:recipe_id, :qty).
+      permit(:recipe_id, :quantity).
       merge(list_id: params[:list_id])
   end
 

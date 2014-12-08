@@ -31,6 +31,10 @@
       <%= link_to "Lists", lists_path %> |
     </div>
 
+    <% if flash[:notice] %>
+      <div id="notice" class="error"><%= flash[:notice] %></div>
+    <% end %>
+
     <div class="content">
       <%= yield %>
     </div>

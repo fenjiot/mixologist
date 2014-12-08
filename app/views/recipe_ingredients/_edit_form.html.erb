@@ -1,9 +1,11 @@
 <h5><%= recipe_ingredient.name.upcase %></h5>
 <%= form_for [recipe_ingredient.recipe, recipe_ingredient] do |form| %>
   <div>
-    <%= form.label :qty %>
-    <%= form.text_field :qty, value: measure_for_field(recipe_ingredient.qty,
-                                             recipe_ingredient.unit_of_measure) %>
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity,
+      value: measure_for_field(recipe_ingredient.quantity,
+                               recipe_ingredient.unit_of_measure
+      ) %>
   </div>
 
   <div>

@@ -12,10 +12,10 @@ class Bartender
   end
 
   def unused_ingredients
-    all_ingredients - ingredients_used
+    all_ingredients.where.not(id: ingredients_used)
   end
 
   def ingredients
-    @ingredients ||= @recipe.recipe_ingredients.order("qty DESC")
+    @ingredients ||= @recipe.recipe_ingredients.order("quantity DESC")
   end
 end

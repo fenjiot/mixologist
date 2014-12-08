@@ -1,20 +1,13 @@
 <%= form_for [list, ListRecipe.new] do |form| %>
   <div>
     <h5><%= form.label "Recipe" %></h5>
-    <% options = options_from_collection_for_select( barback.recipes_to_add,
-                                                    "id",
-                                                    "name",
-                                                   ) %>
-    <%= form.select :recipe_id, options %>
+    <%= form.select :recipe_id,
+      options_from_collection_for_select(barback.recipes_to_add, "id", "name") %>
   </div>
 
-  <% if flash[:notice] %>
-    <div id="notice" class="error"><%= flash[:notice] %></div>
-  <% end %>
-
   <div>
-    <%= form.label :qty %>
-    <%= form.text_field :qty %>
+    <%= form.label :quantity %>
+    <%= form.text_field :quantity %>
   </div>
 
   <%= form.submit "Add recipe to list" %>

@@ -1,8 +1,8 @@
 <h5><%= list_recipe.name.upcase %>
 <%= form_for [list_recipe.list, list_recipe] do |form| %>
   <div>
-    <%= form.label "Servings (drink/person)" %>
-    <%= form.select :qty, (1..100) %>
+    <%= form.label "Quantity of this recipe" %>
+    <%= form.select :quantity, (1..100) %>
   </div>
 
   <div>
