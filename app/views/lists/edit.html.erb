@@ -1,0 +1,18 @@
+<h2>Edit List</h2>
+<div>something </div>
+
+<h3>Add recipes</h3>
+<div class="underscore-box">
+  <%= render "list_recipes/form", list: @list, barback: @barback %>
+</div>
+
+<h3>Edit recipes in list</h3>
+<div class="underscore-box">
+  <ul>
+    <% @list.list_recipes.each do | list_recipe | %>
+      <li>
+        <%= render "list_recipes/edit_form", list_recipe: list_recipe, barback: @barback %>
+      </li>
+    <% end %>
+  </ul>
+</div>

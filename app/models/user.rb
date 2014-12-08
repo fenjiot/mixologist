@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
     class_name: "Rating",
     dependent: :destroy
   has_many :rated_recipes, through: :ratings
+
+  has_many :lists
 end

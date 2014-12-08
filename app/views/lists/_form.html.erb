@@ -1,0 +1,15 @@
+<%= form_for list do |form| %>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label "Party size (people)" %>
+    <%= form.select :serves, (1..100) %>
+  </div>
+
+  <div>
+    <%= form.submit :submit %>
+  </div>
+<% end %>

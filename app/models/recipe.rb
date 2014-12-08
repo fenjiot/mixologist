@@ -14,6 +14,9 @@ class Recipe < ActiveRecord::Base
     dependent: :destroy
   has_many :raters, through: :ratings
 
+  has_many :list_recipes
+  has_many :lists, through: :list_recipes
+
   def owned_by?(potential_owner)
     user == potential_owner
   end
@@ -24,7 +27,7 @@ class Recipe < ActiveRecord::Base
 
   def average_rating
     if ratings.present?
-      total_value_of_ratings / number_of_ratings.to_f
+      (total_value_of_ratings / number_of_ratings.to_f)
     end
   end
 

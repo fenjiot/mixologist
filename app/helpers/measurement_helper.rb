@@ -1,6 +1,6 @@
 module MeasurementHelper
   def measure(qty, unit_of_measure)
-    amount  = Unit(qty.to_s + Jigger::BASE_UNIT_OF_MEASURE)
+    amount = Unit(qty.to_s + Jigger::BASE_UNIT_OF_MEASURE)
     amount >>= unit_of_measure
   end
 
