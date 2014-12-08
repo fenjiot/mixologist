@@ -6,12 +6,12 @@ class Jigger
     unit_of_measure = recipe_ingredient.unit_of_measure
 
     amount = Unit(quantity.to_s + BASE_UNIT_OF_MEASURE)
-    amount >>= unit_of_measure
+    amount = amount.convert_to(unit_of_measure)
   end
 
   def convert_to_base_units(quantity, unit_of_measure)
     amount = Unit(quantity.to_s + unit_of_measure)
-    amount >>= BASE_UNIT_OF_MEASURE
+    amount = amount.convert_to(BASE_UNIT_OF_MEASURE)
     amount.scalar
   end
 end
