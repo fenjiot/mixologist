@@ -25,7 +25,7 @@
   <ul>
     <% @list.list_recipes.each do |list_recipe| %>
       <li>
-        <%= list_recipe.qty %> <%= link_to list_recipe.name, recipe_path(list_recipe.recipe) %>
+        <%= list_recipe.quantity %> <%= link_to list_recipe.name, recipe_path(list_recipe.recipe) %>
       </li>
     <% end %>
   </ul>

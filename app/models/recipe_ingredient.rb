@@ -10,7 +10,7 @@ class RecipeIngredient < ActiveRecord::Base
     "teaspoon",
   ]
 
-  validates :qty, presence: true
+  validates :quantity, presence: true
   validates :unit_of_measure, presence: true
 
   belongs_to :recipe

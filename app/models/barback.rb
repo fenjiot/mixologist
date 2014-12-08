@@ -4,11 +4,11 @@ class Barback
   end
 
   def recipes
-    @list.list_recipes.order("qty DESC")
+    @list.list_recipes.order("quantity DESC")
   end
 
   def recipes_to_add
-    recipes_available - recipes_added
+    recipes_available.where.not(id: recipes_added)
   end
 
   def ingredients_in_recipes
@@ -20,10 +20,10 @@ class Barback
   def list_of_ingredients
     all_the_ingredients = []
     @list.list_recipes.each do |list_recipe|
-      quantity = list_recipe.qty
+      quantity = list_recipe.quantity
       list_recipe.recipe.recipe_ingredients.each do |recipe_ingredient|
-        hash = { recipe_ingredient.ingredient =>
-                 quantity * recipe_ingredient.amount_to_show }
+        ingredient_amount = quantity * recipe_ingredient.amount_to_show
+        hash = { recipe_ingredient.ingredient => ingredient_amount }
         all_the_ingredients << hash
       end
     end

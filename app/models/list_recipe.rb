@@ -1,5 +1,5 @@
 class ListRecipe < ActiveRecord::Base
-  validates :qty, presence: true
+  validates :quantity, presence: true
 
   belongs_to :list
   belongs_to :recipe

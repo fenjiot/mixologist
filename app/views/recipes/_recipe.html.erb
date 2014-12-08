@@ -36,7 +36,7 @@
     <div>
       <% if recipe.recipe_ingredients.present? %>
         <ul>
-          <%= render recipe.recipe_ingredients.order("qty DESC") %>
+          <%= render recipe.recipe_ingredients.order("quantity DESC") %>
         </ul>
       <% else %>
         There haven't been any ingredients added yet!

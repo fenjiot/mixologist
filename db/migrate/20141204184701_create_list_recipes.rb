@@ -3,7 +3,7 @@ class CreateListRecipes < ActiveRecord::Migration
     create_table :list_recipes do |t|
       t.integer :list_id, null: false
       t.integer :recipe_id, null: false
-      t.integer :qty, null: false
+      t.integer :quantity, null: false
 
       t.timestamps null: false
     end

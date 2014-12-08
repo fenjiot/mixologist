@@ -2,7 +2,7 @@ class RecipeIngredientsController < ApplicationController
   def create
     @recipe_ingredient = RecipeIngredient.new(recipe_ingredient_params)
 
-    if ! @recipe_ingredient.save
+    unless @recipe_ingredient.save
       flash[:notice] = "Quantity can't be blank"
     end
 
@@ -25,20 +25,20 @@ class RecipeIngredientsController < ApplicationController
 
   private
 
-  def qty_in_base_units
-    Jigger.
-      new.
-      convert_to_base_units(params[:recipe_ingredient][:qty],
-                            params[:recipe_ingredient][:unit_of_measure]
-        )
+  def quantity_in_base_units
+    Jigger.new.convert_to_base_units(
+      params[:recipe_ingredient][:quantity],
+      params[:recipe_ingredient][:unit_of_measure]
+    )
   end
 
   def recipe_ingredient_params
     params.require(:recipe_ingredient).
-      permit(:ingredient_id, :qty, :unit_of_measure).
-      merge(recipe_id: params[:recipe_id],
-            qty: qty_in_base_units
-        )
+      permit(:ingredient_id, :quantity, :unit_of_measure).
+      merge(
+        recipe_id: params[:recipe_id],
+        quantity: quantity_in_base_units
+      )
   end
 
   def load_recipe_ingredient_from_url

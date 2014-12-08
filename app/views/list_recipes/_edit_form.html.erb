@@ -2,7 +2,7 @@
 <%= form_for [list_recipe.list, list_recipe] do |form| %>
   <div>
     <%= form.label "Servings (drink/person)" %>
-    <%= form.select :qty, (1..100) %>
+    <%= form.select :quantity, (1..100) %>
   </div>
 
   <div>
