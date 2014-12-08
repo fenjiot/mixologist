@@ -1,5 +1,5 @@
 class RecipeIngredient < ActiveRecord::Base
-  UNIT_OF_MEASURE = [
+  UNITS_OF_MEASURE = [
     "fluid-ounce",
     "cup",
     "gallon",
@@ -18,7 +18,7 @@ class RecipeIngredient < ActiveRecord::Base
   delegate :name, to: :ingredient
 
   def self.valid_units_of_measure
-    UNIT_OF_MEASURE
+    UNITS_OF_MEASURE
   end
 
   def amount_to_show
