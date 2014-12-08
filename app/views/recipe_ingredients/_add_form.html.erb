@@ -8,10 +8,6 @@
     <%= form.select :ingredient_id, options %>
   </div>
 
-  <% if flash[:notice] %>
-    <div id="notice" class="error"><%= flash[:notice] %></div>
-  <% end %>
-
   <div>
     <%= form.label :quantity %>
     <%= form.text_field :quantity %>

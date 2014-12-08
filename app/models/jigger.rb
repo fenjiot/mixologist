@@ -10,8 +10,12 @@ class Jigger
   end
 
   def convert_to_base_units(quantity, unit_of_measure)
-    amount = Unit(quantity.to_s + unit_of_measure)
-    amount = amount.convert_to(BASE_UNIT_OF_MEASURE)
-    amount.scalar
+    if quantity.present?
+      amount = Unit(quantity.to_s + unit_of_measure)
+      amount = amount.convert_to(BASE_UNIT_OF_MEASURE)
+      amount.scalar
+    else
+      nil
+    end
   end
 end
