@@ -9,4 +9,3 @@ end
 Unit.redefine!("quart") do |quart|
   quart.display_name = "quart"
 end
-

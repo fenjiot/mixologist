@@ -15,7 +15,6 @@ class RecipeIngredientsController < ApplicationController
       flash_quantity_notice
     end
 
-    binding.pry
     redirect_to recipe_ingredient.recipe
   end
 
