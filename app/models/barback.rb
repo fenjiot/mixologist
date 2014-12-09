@@ -27,8 +27,7 @@ class Barback
         all_the_ingredients << hash
       end
     end
-    binding.pry
-    all_the_ingredients
+    all_the_ingredients.sort_by { |_ingredient, amount| amount }.reverse
   end
 
   def aggregate_ingredient_list(all_the_ingredients)
