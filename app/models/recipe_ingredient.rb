@@ -1,13 +1,26 @@
 class RecipeIngredient < ActiveRecord::Base
   UNITS_OF_MEASURE = [
-    "fluid-ounce",
     "cup",
+    "dash",
+    "fifth",
+    "fluid-ounce",
     "gallon",
+    "half-gallon",
+    "half-pint",
+    "jigger",
+    "measure",
+    "mickey",
     "milliliter",
+    "nip",
     "pint",
+    "pony",
     "quart",
+    "shot",
+    "splash",
+    "split",
     "tablespoon",
     "teaspoon",
+    "tenth",
   ]
 
   validates :quantity, presence: true
