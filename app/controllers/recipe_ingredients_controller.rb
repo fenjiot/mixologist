@@ -12,7 +12,7 @@ class RecipeIngredientsController < ApplicationController
   def update
     recipe_ingredient = load_recipe_ingredient_from_url
     unless recipe_ingredient.update(recipe_ingredient_params)
-       flash_quantity_notice
+      flash_quantity_notice
     end
 
     redirect_to recipe_ingredient.recipe

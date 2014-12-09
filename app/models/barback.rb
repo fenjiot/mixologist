@@ -27,7 +27,7 @@ class Barback
         all_the_ingredients << hash
       end
     end
-    all_the_ingredients.sort_by { |_ingredient, amount| amount }.reverse
+    sort_list_by_largest_quantity(all_the_ingredients)
   end
 
   def aggregate_ingredient_list(all_the_ingredients)
@@ -37,6 +37,10 @@ class Barback
         current_amount + additional_amount
       end
     end
+  end
+
+  def sort_list_by_largest_quantity(list)
+    list.sort_by { |_ingredient, amount| amount }.reverse
   end
 
   def recipes_available
