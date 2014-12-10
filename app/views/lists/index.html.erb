@@ -1,4 +1,7 @@
-<h3><%= link_to "Add a list", new_list_path %></h3>
+<% if signed_in? %>
+  <h3><%= link_to "Add a list", new_list_path %></h3>
+  <br />
+<% end %>
 <h2>Lists</h2>
 
 <ul>

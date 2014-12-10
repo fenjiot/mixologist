@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :ingredients
 
-  resources :lists, only: [:index, :new, :create, :show, :edit] do
+  resources :lists do
     resources :list_recipes, only: [:create, :update, :destroy]
   end
 

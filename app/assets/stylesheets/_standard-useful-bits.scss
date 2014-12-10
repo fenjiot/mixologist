@@ -7,8 +7,12 @@
 }
 
 .underscore-box {
-  border-bottom: 1px solid #353535;
+  background: lighten($background-grey, 40);
+  background: $background-light-green;
+  border-bottom: 2px solid $line-dark-grey;
   padding: 3em;
+  margin-bottom: 1em;
+  max-width: 50em;
 }
 
 .float-left {

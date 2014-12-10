@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mixologistr</title>
+  <title>Mixologist</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -23,12 +23,12 @@
       <%= render "searches/form", query: @query %>
     </div>
 
-    <h1><%= link_to "Mixologistr", root_path %></h1>
+    <h1><%= link_to "Mixologist", root_path %></h1>
 
     <div class="menu">
+      <%= link_to "Lists", lists_path %> |
       <%= link_to "Cocktail recipes", recipes_path %> |
       <%= link_to "Ingredients", ingredients_path %> |
-      <%= link_to "Lists", lists_path %> |
     </div>
 
     <% if flash[:notice] %>

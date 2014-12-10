@@ -3,6 +3,11 @@
   <%= render "recipes/form", recipe: @recipe %>
 </div>
 
+<h3>Add ingredient</h3>
+<div class="underscore-box">
+  <%= render "recipe_ingredients/add_form", recipe: @recipe, bartender: @bartender %>
+</div>
+
 <h3>Ingredients ( <%= @bartender.ingredients.count %> ) - edit</h3>
 <div class="underscore-box">
   <% if @bartender.ingredients.present? %>
@@ -13,11 +18,6 @@
   <% else %>
     There are no ingredients associated with this recipe.
   <% end %>
-</div>
-
-<h3>Add ingredient</h3>
-<div class="underscore-box">
-  <%= render "recipe_ingredients/add_form", recipe: @recipe, bartender: @bartender %>
 </div>
 
 <h3>Suggest a new ingredient:</h3>

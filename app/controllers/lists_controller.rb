@@ -39,6 +39,13 @@ class ListsController < ApplicationController
     end
   end
 
+  def destroy
+    list = load_list_from_url
+    list.destroy
+
+    redirect_to lists_path
+  end
+
   private
 
   def list_params
