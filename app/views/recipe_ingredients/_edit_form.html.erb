@@ -1,16 +1,18 @@
 <h5><%= recipe_ingredient.name.upcase %></h5>
 <%= form_for [recipe_ingredient.recipe, recipe_ingredient] do |form| %>
+  <br />
+  <div>
+    <%= form.label :unit_of_measure %>
+    <% units_of_measure = RecipeIngredient.valid_units_of_measure %>
+    <%= form.select :unit_of_measure, units_of_measure %>
+  </div>
+
   <div>
     <%= form.label :quantity %>
     <%= form.text_field :quantity,
       value: measure_for_field(recipe_ingredient.quantity,
                                recipe_ingredient.unit_of_measure
       ) %>
-  </div>
-
-  <div>
-    <% units_of_measure = RecipeIngredient.valid_units_of_measure %>
-    <%= form.select :unit_of_measure, units_of_measure %>
   </div>
 
   <%= form.submit "Edit ingredient quantity" %>

@@ -15,7 +15,24 @@ class Barback
     aggregate_ingredient_list(list_of_ingredients)
   end
 
+  # def list_ingredients
+  #   # Expect to get a list of ingredients
+  #   # [{ingredient => amount}]
+  #   ingredient_list
+  # end
+
   private
+
+  # def ingredient_list
+  #   ingredients_from_recipes = []
+  #   @list.list_recipes.each do |list_recipe|
+  #     quantity = list_recipe.quantity
+  #     list_recipe.recipes.each do |recipe|
+  #       hash = Bartender.new(recipe).list_ingredients
+  #       ingredients_in_recipe << hash
+  #     end
+  #   end
+  # end
 
   def list_of_ingredients
     all_the_ingredients = []

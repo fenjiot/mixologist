@@ -1,6 +1,6 @@
 <div>
   <li>
     <%= measure(recipe_ingredient.quantity, recipe_ingredient.unit_of_measure) %>
-    <%= link_to recipe_ingredient.name, recipe_ingredient.ingredient %>
+    <%= link_to recipe_ingredient.name.downcase, recipe_ingredient.ingredient %>
   </li>
 </div>

@@ -7,7 +7,7 @@
 <ul>
   <% @recipes.each do |recipe| %>
     <li>
-      <%= link_to recipe.name, recipe_path(recipe) %>
+      <%= link_to recipe.name.capitalize, recipe_path(recipe) %>
       - ingredients: <%= recipe.ingredients.count %>
     </li>
   <% end %>

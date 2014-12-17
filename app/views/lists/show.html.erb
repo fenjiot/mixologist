@@ -1,15 +1,17 @@
 <div class="side-image">
   <div class="images-wrapper"></div>
-  <div class="recipe">
-    <h2><%= @list.name %> list</h2>
+  <div class="recipe" data-list-id="<%= @list.id %>">
+    <h2>List: <span class="title"><%= @list.name %></span></h2>
     <br />
-    <h3>Ingredients need:</h3>
+    <h3>Ingredients needed:</h3>
     <div class="ingredient-list">
       <ul>
         <% if @barback.recipes.present? %>
           <% @barback.ingredients_in_recipes.each do |ingredient, amount| %>
             <li>
-              <%= amount.to_s %> <%= link_to ingredient.name, ingredient %>
+              <%= "%g" % ("%0.2f" % amount.scalar) %>
+              <%= only_unit_of_measure(amount) %>
+              <%= link_to ingredient.name.downcase, ingredient %>
             </li>
           <% end %>
         <% else %>
@@ -20,7 +22,7 @@
 
     <br />
 
-    <h3>Recipes</h3>
+    <h3>Recipes included:</h3>
 
     <% if @list.owned_by?(current_user) %>
       <h4><%= link_to "Edit list", edit_list_path(@list), class:"edit-button" %></h4>
@@ -30,7 +32,9 @@
       <ul>
         <% @list.list_recipes.each do |list_recipe| %>
           <li>
-            <%= list_recipe.quantity %> <%= link_to list_recipe.name, recipe_path(list_recipe.recipe) %>
+            <%= link_to list_recipe.name, recipe_path(list_recipe.recipe) %>
+            x
+            <%= list_recipe.quantity %>
           </li>
         <% end %>
       </ul>
@@ -38,6 +42,7 @@
       <h4>There are no recipes in this list.</h4>
     <% end %>
 
+    <br />
     <% if @list.owned_by?(current_user) %>
       <%= button_to "Delete list",
         list_path(@list),

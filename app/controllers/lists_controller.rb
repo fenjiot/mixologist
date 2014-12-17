@@ -33,7 +33,8 @@ class ListsController < ApplicationController
     @list = load_list_from_url
 
     if @list.update(list_params)
-      redirect_to @list
+      @barback = Barback.new(@list)
+      render @list
     else
       render :edit
     end

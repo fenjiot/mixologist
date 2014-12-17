@@ -7,15 +7,16 @@
                                                    ) %>
     <%= form.select :ingredient_id, options %>
   </div>
+  <br />
+  <div>
+    <%= form.label :unit_of_measure %>
+    <% units_of_measure = RecipeIngredient.valid_units_of_measure %>
+    <%= form.select :unit_of_measure, units_of_measure %>
+  </div>
 
   <div>
     <%= form.label :quantity %>
     <%= form.text_field :quantity %>
-  </div>
-
-  <div>
-    <% units_of_measure = RecipeIngredient.valid_units_of_measure %>
-    <%= form.select :unit_of_measure, units_of_measure %>
   </div>
 
   <%= form.submit "Add ingredient to recipe" %>

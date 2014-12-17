@@ -10,6 +10,12 @@ module MeasurementHelper
     amount.scalar
   end
 
+  def only_unit_of_measure(amount)
+    unit_pattern = /[\d\/\. ]/
+    unit_of_measure = amount.to_s.gsub(unit_pattern, "")
+    unit_of_measure
+  end
+
   private
 
   def prettify(amount, unit_of_measure)
